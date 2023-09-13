@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "이수빈"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "백엔드 개발자"
   location         : "부산"
   email            : 02ggang@gmail.com
   links:
