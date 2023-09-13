@@ -108,11 +108,8 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am an **amazing** person."
   location         : "부산"
-  email            : "02ggang9@gmail.com"
+  email            : 02ggang@gmail.com
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "02ggang9@email.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/02ggang9"
