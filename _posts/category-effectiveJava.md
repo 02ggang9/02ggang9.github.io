@@ -1,7 +1,7 @@
 ---
 title: "effectiveJava"
 layout: archive
-permalink: categories/effectiveJava
+permalink: effectiveJava
 author_profile: true
 sidebar_main: true
 ---
