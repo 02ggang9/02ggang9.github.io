@@ -15,7 +15,7 @@ sidebar-category:
     children:
       - title: "Spring Security"
         url: "/springSecurity"
-        category: "springSecurity"
+        # category: "springSecurity"
       - title: "Effective Java"
         url: "/effectiveJava"
-        category: "effectiveJava"
+        # category: "effectiveJava"
