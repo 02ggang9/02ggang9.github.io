@@ -90,7 +90,7 @@ docs:
         url: /terms/
 
 # sidebar navigation list sample
-sidebar-sample:
+sidebar-category:
   - title: "Parent Page A"
     children:
       - title: "Child Page A1"
