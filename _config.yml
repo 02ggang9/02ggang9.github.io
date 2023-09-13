@@ -261,3 +261,12 @@ defaults:
       comments: # true
       share: true
       related: true
+
+defaults:
+  # _docs
+  - scope:
+      path: ""
+      type: docs
+    values:
+      sidebar:
+        nav: "docs"
