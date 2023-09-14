@@ -19,3 +19,6 @@ sidebar-category:
       - title: "Effective Java"
         url: "/effectiveJava"
         category: "effectiveJava"
+      - title: "etc"
+        url: "/etc"
+        category: "etc"
