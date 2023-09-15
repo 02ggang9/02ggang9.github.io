@@ -108,7 +108,7 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "백엔드 개발자"
   location         : "부산"
-  email            : 02ggang@gmail.com
+  email            : 02ggang9@gmail.com
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
