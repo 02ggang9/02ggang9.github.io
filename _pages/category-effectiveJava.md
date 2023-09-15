@@ -1,9 +1,9 @@
 ---
-title: "effectiveJava"
+title: "Java"
 layout: archive
-permalink: /effectiveJava
+permalink: /java
 ---
 
 
-{% assign posts = site.categories.effectiveJava %}
+{% assign posts = site.categories.Java %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
