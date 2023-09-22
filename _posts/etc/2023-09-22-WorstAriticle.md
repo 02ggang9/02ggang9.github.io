@@ -1,5 +1,8 @@
-# 좋은 글은 제목에서부터 시작된다.
-202155581 이수빈
+---
+title:  "공학작문발표 과제 나쁜 글 - 좋은 글은 제목에서부터 시작된다."
+categories:
+  - etc
+---
 
 이 글은 "Spring Security Chapter - 1"<sup>[1](#1)</sup>이라는 제목으로 Spring Security Framework에 대해서 설명하는 글입니다. 이 글은 제목이 너무 포괄적이고 소주제가 없어 말하고자 하는 핵심을 알 수 없었습니다. 글의 초반부에 Spring Security Framework 사용 가이드에 대해서 설명하다가 어느순간 PasswordEncoder를 사용하는 방법에 대해서 설명하고 있습니다. 말하고자 하는 바를 정확히 전달하기 위해서는 이러한 문제점을 보완할 필요가 있습니다.
 
