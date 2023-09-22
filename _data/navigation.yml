@@ -21,7 +21,7 @@ sidebar-category:
         category: "Java"
       - title: "JPA"
         url: "/jpa"
-        category: "Java"
+        category: "Jpa"
       - title: "etc"
         url: "/etc"
         category: "etc"
