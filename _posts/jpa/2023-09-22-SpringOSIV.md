@@ -1,5 +1,5 @@
 ---
-title:  "JPA - OSIV에 대해서 알아보자"
+title: "JPA - OSIV에 대해서 알아보자"
 categories:
   - Jpa
 ---
@@ -14,14 +14,14 @@ KEEPER R2 프로젝트에서 이메일 변경 API가 정상적으로 작동하�
 ### 준영속 상태와 지연로딩
 프리젠테이션 계층에서 준영속 상태를 지연로딩을 하게 되면 LazyInitializationException 예외가 발생합니다. 이유는 대부분 서비스 계층에서 트랜잭션이 시작하고 종료되기 때문에 프리젠테이션 계층에서 영속성 컨텍스트는 종료된 상태입니다.
 
-![OSIVOff](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/OsivOff.png?raw=true)
+![OSIVOff](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/OsivOff.png?raw=true)<sup>[1](#1)</sup>
 
 위의 지연로딩 문제점을 OSIV를 사용해 해결할 수 있습니다.
 
 ## 과거 OSIV(Open Session in View)
 과거 OSIV는 트랜잭션의 범위가 Filter Interceptor 까지 였기때문에 영속성 컨텍스트의 범위도 프리젠테이션 계층까지 넓어졌습니다. 따라서 영속성 컨텍스트가 살아있기 때문에 프리젠테이션 계층에서도 지연로딩을 사용할 수 있습니다.
 
-![PastOSIV](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/PastOSIV.png?raw=true)
+![PastOSIV](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/PastOSIV.png?raw=true)<sup>[2](#2)</sup>
 
 하지만 의도치 않게 값이 변경되는 장애가 발생할 수 있습니다. 트랜잭션의 범위도 프리젠테이션 계층까지였기 때문에 비지니스 로직을 거치고 프리젠테이션 계층에서 엔티티의 값을 변경하면 변경 감지로 인해서 값이 수정될 수 있습니다.
 
@@ -31,7 +31,7 @@ KEEPER R2 프로젝트에서 이메일 변경 API가 정상적으로 작동하�
 ### 트랜잭션 없이 읽기
 현재 사용되는 Spring OSIV는 비지니스 계층에서만 트랜잭션을 사용합니다. 때문에 비지니스 로직을 거치고 프리젠테이션 계층에서 엔티티의 값을 수정해도 변경 감지로 인한 데이터 변경은 불가능 합니다. 하지만 영속성 컨텍스트는 살아있기 때문에 지연 로딩을 사용해 엔티티를 조회할 수 있는 장점이 생깁니다. 이를 "트랜잭션 없이 읽기(NonTransactional reads)"라고 합니다.
 
-![SpringOSIV](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/SpringOSIV.png?raw=true)
+![SpringOSIV](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/OSIV/SpringOSIV.png?raw=true)<sup>[3](#3)</sup>
 
 ## 문제점
 ### 비즈니스 로직 실행 전 엔티티 값을 변경하면 안된다.
@@ -56,6 +56,12 @@ return memberRepository.findById(loginMemberId)
 
 ### 참고문헌
 자바 ORM 표준 JPA 프로그래밍 - 김영한 지음 - 2015.07.20
+
+<a name="1">[1]</a> (참고: 자바 ORM 표준 JPA - 김영한)
+
+<a name="2">[2]</a> URL: https://hudi.blog/multi-datasource-issue-with-osiv/
+
+<a name="3">[3]</a> (참고: 자바 ORM 표준 JPA - 김영한)
 
 
 
