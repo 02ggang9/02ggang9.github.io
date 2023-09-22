@@ -4,7 +4,7 @@ categories:
   - etc
 ---
 
-이 글은 "Spring Security Chapter - 1"<sup>[1](#1)</sup>이라는 제목으로 Spring Security Framework에 대해서 설명하는 글입니다. 이 글은 제목이 너무 포괄적이고 소주제가 없어 말하고자 하는 핵심을 알 수 없었습니다. 글의 초반부에 Spring Security Framework 사용 가이드에 대해서 설명하다가 어느순간 PasswordEncoder를 사용하는 방법에 대해서 설명하고 있습니다. 말하고자 하는 바를 정확히 전달하기 위해서는 이러한 문제점을 보완할 필요가 있습니다.
+이 글은 "Spring Security Chapter - 1"<sup>[1](#1)</sup>이라는 제목으로 Spring Security Framework에 대해서 설명하는 글입니다. 이 글은 제목이 너무 포괄적이고 소주제가 없어 말하고자 하는 핵심을 알 수 없었습니다. 글의 초반부에 Spring Security Framework 사용 가이드에 대해서 설명하다가 어느순간 PasswordEncoder를 사용하는 방법에 대해서 설명하고 있습니다. 말하고자 하는 바를 정확히 전달하기 위해서는 이러한 문제점을 보완할 필요가 있습니다.  
 
 ## 긴 글은 짧은 글로 나눠서 적어라
 대주제가 많다면 글을 나눠서 적어야 합니다. 이 글은 Spring Security Framework 사용 가이드와 PasswordEncoder를 사용하는 방법에 대해서 설명하고 있습니다. 큰 2개의 주제를 한 글에서 설명하고 있어 제목이 포괄적이게 됩니다. "Spring Security Framework 사용 가이트"와 "PasswordEncoder 사용법" 처럼 두 개의 글로 분리하면 독자는 필자가 설명하고자 하는 핵심 주제를 정확히 파악할 수 있었을 것 입니다.
