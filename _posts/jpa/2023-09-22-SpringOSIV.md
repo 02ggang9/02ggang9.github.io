@@ -1,5 +1,5 @@
 ---
-title: "JPA - OSIV에 대해서 알아보자"
+title: "JPA - OSIV 기능에 대해서 알아보자."
 categories:
   - Jpa
 ---
