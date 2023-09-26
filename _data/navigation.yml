@@ -13,6 +13,9 @@
 sidebar-category:
   - title: "개발"
     children:
+      - title: "Spring"
+        url: "/spring"
+        category: "spring"
       - title: "Spring Security"
         url: "/springSecurity"
         category: "springSecurity"
