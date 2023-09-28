@@ -112,11 +112,7 @@ balance = 0
 
 이 결과는 지극히 정상적인 결과라고 볼 수 있습니다. 하지만 실제 운영되는 사이트에서는 시간의 지연이 있기 마련입니다. 또, 저급 수준의 언어 (어셈블리어)로 코드를 변경하게 되면 두 줄로 끝나지 않습니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1fbe9a78-d9bc-40bb-be8c-bc00063765d7/Untitled.png)
-
-/Users/leesoobeen/Desktop/02ggang9.github.io/_posts/images/bugBounty/1.png
-
-![쿼리횟수](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/bugBounty/1.png?raw=true)
+![어셈블리](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/bugBounty/1.png?raw=true)
 
 
 위의 어셈블리어를 보면 레지스터는 구분되지만 Balance라는 공유 자원에 서로 접근하고 있습니다. 그리고 코드가 서로 뒤엉켜 실행이 될 수 있기 때문에 실행 결과가 달라질 수 있습니다.
@@ -129,7 +125,7 @@ balance = 1000000
 
 이렇게 약간의 시간 지연을 준 것만으로도 여러 쓰레드가 하나의 공유 자원을 사용하는 프로그램은 망가집니다.
 
-### Mutual Exclusion | DeadLock | Starvation
+## Mutual Exclusion | DeadLock | Starvation
 
 위의 은행 입출금 문제와 코드로 Race Condition의 문제점을 간단하게 알아봤는데요. 좀 더 깊숙히 들어가면 아래의 세가지 문제에 직면하게 됩니다.
 
@@ -147,7 +143,7 @@ Race Condition을 막기 위해서는 두 개 이상의 프로세스가 공용 �
 
 요약하자면 Race Condition을 해결하기 위해서는 한 프로세스가 공용 데이터를 사용하고 있으면 다른 프로세스가 그 자원을 사용하지 못하도록 막아야 한다. → 영구적으로 프로그램이 멈출 수 있는 상태가 될 수 있다.
 
-### 대응 방안
+## 대응 방안
 
 - Semaphore(세마포어)
 
@@ -157,14 +153,10 @@ Race Condition을 막기 위해서는 두 개 이상의 프로세스가 공용 �
 
 뮤텍스도 앞에서 말씀드린 Mutual Exclusion 문제를 해결하기 위한 방법입니다. 세마포어와의 차이점은 세마포어는 Signaling 메커니즘으로 락을 걸지 않은 쓰레드도 signal을 사용해 락을 해제할 수 있습니다. 하지만 뮤텍스는 Locking 메커니즘으로 락을 걸은 쓰레드만이 임계 영역을 나갈 때 락을 해제할 수 있습니다. 세모포어의 카운트를 1로 설정하면 뮤텍스처럼 활용할 수 있습니다.
 
-### WarGame | Race Condition
+## WarGame | Race Condition
 
 Race Condition 개념 정리하고 바로 실습 문제를 풀어보았습니다!
 
 [Challenge - 60 | Race Condition](https://www.notion.so/Challenge-60-Race-Condition-693d565e5edd41ac9289ca38958b8756?pvs=21) 
 
 [DreamHack | LEVEL2 | login - 1 | Race Condition](https://www.notion.so/DreamHack-LEVEL2-login-1-Race-Condition-f5ee80d4d042479290b5ca44b9c4c91f?pvs=21) 
-
-### 출처
-
-[https://velog.io/@codemcd/운영체제OS-8.-프로세스-동기화-1#:~:text=프로세스 동기화는 여러 프로세스,을 유지시켜주어야 한다](https://velog.io/@codemcd/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9COS-8.-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EA%B8%B0%ED%99%94-1#:~:text=%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EB%8F%99%EA%B8%B0%ED%99%94%EB%8A%94%20%EC%97%AC%EB%9F%AC%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4,%EC%9D%84%20%EC%9C%A0%EC%A7%80%EC%8B%9C%EC%BC%9C%EC%A3%BC%EC%96%B4%EC%95%BC%20%ED%95%9C%EB%8B%A4)
