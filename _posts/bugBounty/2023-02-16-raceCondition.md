@@ -159,6 +159,6 @@ Race Condition을 막기 위해서는 두 개 이상의 프로세스가 공용 �
 
 Race Condition 개념 정리하고 바로 실습 문제를 풀어보았습니다!
 
-[Challenge - 60 | Race Condition](https://www.notion.so/Challenge-60-Race-Condition-693d565e5edd41ac9289ca38958b8756?pvs=21) 
+[Challenge - 60 | Race Condition](https://02ggang9.github.io/wargame/challenge60/) 
 
 [DreamHack | LEVEL2 | login - 1 | Race Condition](https://www.notion.so/DreamHack-LEVEL2-login-1-Race-Condition-f5ee80d4d042479290b5ca44b9c4c91f?pvs=21) 
