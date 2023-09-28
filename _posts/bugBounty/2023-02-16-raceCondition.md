@@ -1,7 +1,9 @@
-# 버그 바운티 | Race Condition
-
 ---
-
+published: true
+title:  "BugBounty - Race Condition"
+categories:
+  - bugBounty
+---
 ## 계기
 
 처음으로 버그 바운티를 해본 날 입니다. DreamHack 사이트를 모의해킹 했는데 프로그램이 시작된지 1년이 지나 많은 보고서가 나와 있었고 해킹을 가르치는 사이트라 보안이 잘 되어 있었습니다. 그래서 취약점을 찾지 못했고 다른 분들의 보고서를 보면서 어떤 취약점이 있었고 공격 루트와 대응 방안이 궁금했습니다. 그 중에서 최고 상금 50만원을 받은 취약점이 바로 **Race Condition** 입니다.
