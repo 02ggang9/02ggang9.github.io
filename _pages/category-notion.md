@@ -1,7 +1,7 @@
 ---
 title: "정보보안 Notion 페이지"
 layout: archive
-permalink: /Notion
+permalink: /notion
 ---
 정보보안에 관한 포스팅은 아래의 노션에 정리했습니다.
 
