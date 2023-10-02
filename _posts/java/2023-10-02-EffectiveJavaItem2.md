@@ -80,12 +80,18 @@ public class NutritionFacts {
 
     public static class Builder {
         // 필수 매개변수
-        private final int ServingSize;
+        private final int servingSize;
         private final int servings;
         
         // 선택 매개변수
         private final int calories = 0;
         private final int fat = 0;
+
+        public Builder builder(int servingSize, int servings) {
+            this.servingSize = servingSize;
+            this.servings = servings;
+            return this;
+        }
 
         public Builder calories(int val) {
             this.calories = val;
