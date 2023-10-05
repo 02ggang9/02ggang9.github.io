@@ -87,10 +87,9 @@ public class NutritionFacts {
         private final int calories = 0;
         private final int fat = 0;
 
-        public Builder builder(int servingSize, int servings) {
+        public Builder(int servingSize, int servings) {
             this.servingSize = servingSize;
             this.servings = servings;
-            return this;
         }
 
         public Builder calories(int val) {
