@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: "Effective Java Item 6 - 불필요한 객체 생성을 피하라"
 categories:
   - Java
