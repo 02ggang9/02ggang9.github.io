@@ -68,7 +68,7 @@ public class PostRepositoryTest {
 ~~~
 
 ### 주의점
-String, Integer 타입 등이 Key 값이라면 null이 되어도 GC 시점에 사라지지 않습니다.왜냐하면 자주 사용되는 String과 Integer 값들은 캐싱되기 때문입니다. (String pool, Constant pool 등) 따라서 래퍼런스 타입으로 감싸서 Key 값으로 사용하는 방법을 사용해야 합니다.
+String, Integer 타입 등이 Key 값이라면 null이 되어도 GC 시점에 사라지지 않습니다. 왜냐하면 자주 사용되는 String과 Integer 값들은 캐싱되기 때문입니다(String pool, Constant pool 등). 따라서 래퍼런스 타입(CacheKey 처럼)으로 감싸서 Key 값으로 넣는 방법을 사용해야 합니다.
 
 ### StrongReference
 StringReference는 평소 저희가 사용하는 가장 일반적인 참조 유형입니다. Strong Reference가 있는 객체는 GC 대상이 되지 않습니다.
@@ -91,8 +91,6 @@ WeakReference는 null이 되면 GC의 대상이 됩니다. SoftReference와 다�
 ~~~java
 WeakReference<Integer> weak = new WeakReference<Integer>(a);
 ~~~
-
-
 
 ## NullPointException
 
