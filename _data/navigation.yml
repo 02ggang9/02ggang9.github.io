@@ -28,6 +28,9 @@ sidebar-category:
       - title: "etc"
         url: "/etc"
         category: "etc"
+      - title: "CleanCode"
+        url: "/cleanCode"
+        category: "cleanCode"
   - title: "정보보안"
     children:
       - title: "Notion"
