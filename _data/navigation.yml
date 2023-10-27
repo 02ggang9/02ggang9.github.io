@@ -31,6 +31,9 @@ sidebar-category:
       - title: "CleanCode"
         url: "/cleanCode"
         category: "cleanCode"
+      - title: "우아한테크코스"
+        url: "/wooteco"
+        category: "wooteco"
   - title: "정보보안"
     children:
       - title: "Notion"
