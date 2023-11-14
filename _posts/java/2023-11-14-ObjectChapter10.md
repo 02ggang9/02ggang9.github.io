@@ -206,7 +206,7 @@ public class WeekdayDiscount extends Discount {
 이번 글에서는 오브젝트 책에서 나온 내용을 토대로 4주차 프리코스 미션인 산타 게임을 풀어봤습니다. 상속만 사용한다면 코드를 재사용하고 있다는 느낌은 들지만 사실 중복 코드 제거를 위해 새로운 중복 코드를 만들어야 합니다. 또, 부모 클래스 코드를 재사용하기 위해 개발자가 세운 가정을 이해해야 하는 번거로운 과정을 거쳐야 합니다. 따라서 추상 클래스를 상속해야 하며, 그렇게 했을 경우에 생기는 이점에 대해서도 알아봤습니다.
 
 마지막으로 이번 미션에서의 디펜던시를 그려보면서 마무리 하도록 하겠습니다.
-![디펜던시](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/java/object/10장디펜던시.jpeg)
+![디펜던시](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/java/object/10장디펜던시.jpeg?raw=true)
 
 
 
