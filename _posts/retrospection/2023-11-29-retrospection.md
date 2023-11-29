@@ -20,9 +20,11 @@ categories:
 
 ### 학습 기록
 - Yun님의 Spring-jpa-best-practice의 STEP 4 ~ STEP 6 공부
+
 KEEPER R2 프로젝트의 과거 PR을 보다가 미니언 선배님이 공유해주신 자료를 봤습니다. Embedded를 사용한 Password 처리가 아주 인상 깊었습니다. 최근 오브젝트 책을 읽으며 책임의 중요성을 깨닫게 되었는데 Embedded를 사용하면 객체의 책임을 분리하고 응집력을 높일 수 있었습니다.
 
 - @Builder 패턴 공부
+
 우아한테크코스 코치님들이 운영하시는 스프링 스터디를 진행하면서 @Builder 어노테이션을 사용했습니다. GoF 디자인 패턴 중 빌더 패던을 공부하고 과거 KEEPER R2 프로젝트에서 사용했던 @Builder 어노테이션에 대해 잠깐 생각해 봤는데 Null 체킹과 Empty를 체킹하는 방법에 대해 의문이 들었습니다.
 
 @Builder 어노테이션을 사용하면서 Null 체킹과 Empty를 체킹하는 방법에 대해서는 추후 블로그 글로 정리해 보도록 하겠습니다.
