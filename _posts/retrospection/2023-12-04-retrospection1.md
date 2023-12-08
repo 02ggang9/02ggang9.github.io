@@ -19,18 +19,38 @@ categories:
 
 - 전공 수업 플랫폼기반프로그래밍 Network programming with Socket 수강
 
-- Next Step 스프링 스터디 코드 리뷰
+- Next Step 스프링 스터디 코드 리뷰 -> DTO는 어디에?
 
 - Next Step 스프링 스터디 3주차 미션(예정)
 
 
 ## 2023.12.06 (수)
 
+### 학습 기록
+
+- Next Step 스프링 스터디 3주차 미션 완료
+
+- 
+
 
 ## 2023.12.07 (목)
 
+### 학습 기록
+
+- 플랫폼기반프로그래밍(JAVA) Swing, Socket을 활용한 과제
+
+- DTO 위치를 어디에 두는지에 관한 문제 해결
+
+
 
 ## 2023.12.08 (금)
+
+### 학습 기록
+
+- 백기선 이펙티브 자바 Item 9 try-finally 보다 try-with-resouces를사용하라.
+
+- 플랫폼기반프로그래밍(JAVA) 인터페이스, 예외 처리, Thread
+
 
 
 ## 2023.12.09 (토)
