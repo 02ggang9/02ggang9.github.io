@@ -51,6 +51,8 @@ categories:
 
 - 플랫폼기반프로그래밍(JAVA) 인터페이스, 예외 처리, Thread
 
+- TODO ExceptionAdvice 글 작성해보기
+
 
 
 ## 2023.12.09 (토)
