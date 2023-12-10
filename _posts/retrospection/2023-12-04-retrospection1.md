@@ -37,7 +37,7 @@ categories:
 
 2023.12.05 회고에서 작성한 DTO 패키지는 어디에? 문제를 해결하기 위해서 DTO 패키지 위치를 레이어 레벨에 생성했습니다. 아직 프로젝트 세부사항이 결정되지 않아 컨벤션을 맞추지 못했지만 나중에 저의 생각을 잘 전달하기 위해서 정리했습니다. 이에 대한 내용은 아래 정리 글에서 확인하실 수 있습니다. (아직 미완입니다. 다음 주에 완성 예정입니다.)
 
-URL : https://02ggang9.github.io/DtoPackageLocation/
+[DTO 패키지는 어디에](https://02ggang9.github.io/DtoPackageLocation/)
 
 ### 학습 기록
 
@@ -54,7 +54,7 @@ URL : https://02ggang9.github.io/DtoPackageLocation/
 
 아래는 플랫폼기반프로그래밍(JAVA) 수업 과제에서 try-finally를 사용했는데 리소스 Leak과 코드가 지저분해지는 문제가 있었습니다. 이를 해결하기 위해서 Effective Java 책의 Item 9 - try-finally 보다 try-with-resources를 사용하라 챕터를 공부하고 과제에 적용했습니다. 공부하면서 또 다른 장점에 대해 배웠습니다. 이에 대한 내용은 아래 정리 글에서 확인하실 수 있습니다.
 
-URL : https://02ggang9.github.io/java/EffectiveJavaItem9/
+[try-with-resources](https://02ggang9.github.io/java/EffectiveJavaItem9/)
 
 ### 학습 기록
 
