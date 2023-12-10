@@ -14,7 +14,7 @@ try-with-resources를 사용하면 발생하는 장점 3가지와 어떻게 과�
 
 ## try-with-resources는 stackTrace가 가능하다.
 
-try-with-resources는 try-finally와는 다르게 stackTrace에 발생한 모든 예외가 잡힙니다. 반대로 말하면 try-finally는 모든 예외가 잡히지 않아 디버깅을 어렵게 만듭니다.
+try-with-resources는 try-finally와는 다르게 발생한 모든 예외가 stackTrace에 잡힙니다. 반대로 말하면 try-finally는 모든 예외가 잡히지 않아 디버깅을 어렵게 만듭니다.
 
 ~~~java
 public class BadBufferedReader extends BufferedReader {
