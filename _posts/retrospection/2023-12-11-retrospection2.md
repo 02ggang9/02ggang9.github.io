@@ -40,6 +40,8 @@ categories:
 
 - 시험 대비 데이터베이스 9장(Integrity와 EER), 10장(View 처리), 11장(Stored Procedure), 12장(함수 종속성과 Normal Form), 14장(인덱스, 파티션, Locking) 복습
 
+- 데이터베이스 14장 Locking(dirty read, phantom read 등등)에 관련한 과제 제출
+
 - 컴퓨터네트워크 4장(NetDP) 복습
 
 ## 2023.12.17 (일)
