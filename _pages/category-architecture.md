@@ -1,5 +1,5 @@
 ---
-title: "Architecture"
+title: "architecture"
 layout: archive
 permalink: /architecture
 ---
