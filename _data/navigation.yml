@@ -16,29 +16,31 @@ sidebar-category:
       - title: "Spring"
         url: "/spring"
         category: "spring"
+
       - title: "Spring Security"
         url: "/springSecurity"
         category: "springSecurity"
+
       - title: "Java"
         url: "/java"
         category: "Java"
+
       - title: "JPA"
         url: "/jpa"
         category: "Jpa"
+
       - title: "etc"
         url: "/etc"
         category: "etc"
+
       - title: "CleanCode"
         url: "/cleanCode"
         category: "cleanCode"
+
       - title: "우아한테크코스"
         url: "/wooteco"
         category: "wooteco"
+
       - title: "회고"
         url: "/retrospection"
         catetory: "retrospection"
-  - title: "정보보안"
-    children:
-      - title: "Notion"
-        url: "/notion"
-        category: "notion"
