@@ -1,8 +1,9 @@
 ---
-title: "Architecture"
+title: "Review"
 layout: archive
-permalink: /architecture
+permalink: /review
 ---
 
-{% assign posts = site.categories.architecture %}
+
+{% assign posts = site.categories.review %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

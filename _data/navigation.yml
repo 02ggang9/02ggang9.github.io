@@ -44,7 +44,7 @@ sidebar-category:
       - title: "Architecture"
         url: "/architecture"
         category: "architecture"
-
-      - title: "회고"
-        url: "/retrospection"
-        catetory: "retrospection"
+      
+      - title: "review"
+        url: "/review"
+        category: "review"
