@@ -40,7 +40,11 @@ sidebar-category:
       - title: "우아한테크코스"
         url: "/wooteco"
         category: "wooteco"
+      
+      - title: "Architecture"
+        url: "/architecture"
+        category: "architecture"
 
       - title: "회고"
         url: "/retrospection"
-        catetory: "retro"
+        catetory: "retrospection"
