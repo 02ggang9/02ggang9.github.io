@@ -2,7 +2,7 @@
 published: true
 title:  "회고 - 2023.12.04 ~ 2023.12.10"
 categories:
-  - retrospection
+  - retro
 ---
 
 ## 2023.12.04 (월)
