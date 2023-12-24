@@ -12,7 +12,7 @@ categories:
 ## 서론
 
 
-저번에 백기선님의 GoF Design Pattern - Observer 패턴을 공부하고 포스팅 했습니다. 이번에는 토비님의 [유튜브 라이브 코딩 방송](https://www.youtube.com/watch?v=8fenTR3KOJo&list=PLv-xDnFD-nnmof-yoZQN8Fs2kVljIuFyC&index=10)을 보면서 따라 쳐봤고, 내용을 정리해봤습니다. 영상 빌드업이 굉장히 탄탄했고 이 글을 보시는 다른 분들도 꼭 한번쯤 보셨으면 좋겠습니다. 아래에서는 Pull 방식과 Push 방식의 차이점에 대해서 알아보고, JAVA 9 버전에 Deprecated 된 Observer 인터페이스를 사용해 옵저버 패턴을 만들어 보고, 똑같이 스프링 진영에서 제공하는 Publiser, Subscriber 인터페이스를 이용해 옵저버 패턴을 만들어 보겠습니다.
+저번에 백기선님의 GoF Design Pattern - Observer 패턴 강의를 보고 정리 후 포스팅 했습니다. 이번에는 토비님의 [유튜브 라이브 코딩 방송](https://www.youtube.com/watch?v=8fenTR3KOJo&list=PLv-xDnFD-nnmof-yoZQN8Fs2kVljIuFyC&index=10)을 보면서 따라 쳐봤고, 내용을 정리해 봤습니다. 영상 빌드업이 굉장히 탄탄했고 이 글을 보시는 다른 분들도 꼭 한번쯤 보셨으면 좋겠습니다. 아래에서는 Pull 방식과 Push 방식의 차이점에 대해서 알아보고, JAVA 9 버전에 Deprecated 된 Observer 인터페이스를 사용해 옵저버 패턴을 만들어 보고, 똑같이 스프링 진영에서 제공하는 Publiser, Subscriber 인터페이스를 이용해 옵저버 패턴을 만들어 보겠습니다.
 
 
 ## for-each와 iterator는 Pull 방식이다.
@@ -240,7 +240,7 @@ public class PubSub {
 
 ## 결론
 
-Pull 방식과 Push 방식은 쌍대성을 지닙니다. Spring Reactive Streams에서 개서된 옵저버 패턴을 적극적으로 사용하는 이유는 Push 방식이 비동기적으로 처리하기 수월하고 Pull 방식은 너무 어렵기 때문입니다. 개선된 옵저버 패턴은 완료와 예외를 처리할 수 있도록 방식을 제공해주고 subsription을 통해서 스케일링을 가능하도록 도와줍니다.
+Pull 방식과 Push 방식은 쌍대성을 지닙니다. Spring Reactive Streams에서 개산된 옵저버 패턴을 적극적으로 사용하는 이유는 Push 방식이 비동기적으로 처리하기 수월하고 Pull 방식은 너무 어렵기 때문입니다. 개선된 옵저버 패턴은 완료와 예외를 처리할 수 있도록 방식을 제공해주고 subsription을 통해서 스케일링을 가능하도록 도와줍니다.
 
 
 ## 참고
