@@ -1,3 +1,11 @@
+---
+published: false
+title:  "Spring - Toby Spring Reactive Streams (1) Observer 패턴"
+categories:
+  - spring
+---
+
+
 Containerless 개발??
 
 한 개발자의 요청 사항으로부터 시작됐다. 컨테이너가 없는??
