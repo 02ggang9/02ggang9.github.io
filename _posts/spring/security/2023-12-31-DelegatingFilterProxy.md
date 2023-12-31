@@ -11,7 +11,7 @@ Request가 들어오면 WAS는 각 request에 맞는 서블릿을 실행합니�
 
 ## 서론
 
-미니언 선배님께서 KEEPER R2 프로젝트 인증/인가 부분을 인수인계 해 주신다고 해주셔서 멈췄던 Spring Security 공부를 다시 시작했습니다. API 사용은 다 배웠으나 아키텍처가 어떻게 되는지 몰라서 이번 기회에 정리했습니다. 
+미니언 선배님께서 KEEPER R2 프로젝트 인증/인가 부분을 인수인계 해 주신다고 하셔서 멈췄던 Spring Security 공부를 다시 시작했습니다. API 사용은 다 배웠으나 아키텍처가 어떻게 되는지 몰라서 이번 기회에 정리했습니다. 
 
 ## Request 처리 과정과 DelegatingFilterProxy
 
@@ -61,6 +61,6 @@ public class SecurityFilterAutoConfiguration {
 }
 ~~~
 
-실제 디버깅해서 찾아보면 targetName이 "springSecurityFilterChain"인 것을 확인할 수 있습니다.
+실제 DelegatingFilterProxy에서 디버깅해 보면 targetName이 "springSecurityFilterChain"인 것을 확인할 수 있습니다.
 
 ![DelegatingFilterProxy](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/spring/security/chapter2/DelegatingFilterProxy2.png?raw=true)
