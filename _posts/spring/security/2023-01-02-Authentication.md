@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Spring Security - Authentication과 SecurityContextHolder, SecurityContext"
 categories:
   - spring
