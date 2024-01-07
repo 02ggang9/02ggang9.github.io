@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Spring Security - 웹 애플리케이션 이해"
 categories:
   - spring
@@ -58,7 +58,7 @@ public class HelloServlet extends HttpServlet {
 
 ~~~
 
-WAS는 클라이언트가 보낸 메시지를 통해 Request와 Response 객체를 생성하고 적절한 서블릿을 실행시킵니다.
+WAS는 클라이언트가 보낸 메시지를 통해 Request와 Response 객체를 생성하고 적절한 서블릿을 실행시킵니다. 서블릿 객체는 싱글톤으로 관리되므로 공유 변수 사용에 각별히 주의해야 합니다.
 
 서블릿은 클라이언트의 요청과 결과를 반활할 수 있도록 도와주는 기술임. 어떻게 도와주냐
 우리가 폼 형식으로 데이터를 전송하면 개발자는 뭘 해야함? http 메시지를 슬라이스치고 데이터를 읽어와야함. 예를 들면 md -> pdf로 변환할 때 "###"가 몇 번 쓰였는지 확인해야 하는 것처럼 
