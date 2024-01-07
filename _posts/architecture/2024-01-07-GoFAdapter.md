@@ -120,8 +120,6 @@ public class AccountUserDetailsService implements UserDetailsService {
 
 이 방법은 Adaptee의 클래스가 Client의 인터페이스를 직접 구현하는 방법입니다. 이 방법의 장점은 별도의 어댑터 클래스를 만들지 않아도 되며, 복잡도와 코드의 수가 줄어듭니다. 하지만 단일 책임 원칙 입장에서 본다면 어댑터 클래스를 만드는게 더 좋습니다.
 
-이전에 비해 기존의 코드를 Client의 인터페이스를 구현하도록 코드가 바뀐다는 점인데 장점은 별도의 어댑터 클래스를 만들지 않아도 됨. 복잡도가 내려가고 코드의 수가 줄어듬. 하지만 단일 책임 원칙 입장에서는 어댑터 클래스를 만드는게 더 좋음. 하지만 원칙에 목 매달지 말고 현재 하고 있는 프로젝트에서 이 방법이 실용성이 더 높다고 생각할 경우 유연하게 바꿔라.
-
 ~~~java
 @Getter @Setter
 public class Account implements UserDetails {
