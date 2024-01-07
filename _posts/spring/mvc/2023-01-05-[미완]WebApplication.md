@@ -21,7 +21,44 @@ Web Server는 정적인 리소스(HTML, CSS, 이미지)를 제공할 수 있습�
 
 ## 서블릿
 
-서블릿은 클라이언트의 요청 처리와 응답 반환을 쉽게 도와주는 자바 웹 프로그래밍 기술입니다. 서블릿이 없다면 http 메시지를 파싱하고 예외처리를 한 후 
+서블릿은 클라이언트의 요청 처리와 응답 반환을 쉽게 도와주는 자바 웹 프로그래밍 기술입니다. 서블릿이 없다면 아래 사진처럼 번거러운 작업을 개발자가 하나하나 해야합니다. 서블릿을 사용한다면 쉽게 클라이언트의 요청에 담긴 메시지를 꺼내올 수 있고 쉽게 클라이언트에게 응답을 보낼 수 있습니다.
+
+스프링 부트에 있는 임베디드 톰캣(WAS)은 서블릿을 지원하는데 아래와 같은 코드로 서블릿을 등록하고, 사용할 수 있습니다.
+
+~~~java
+@ServletComponentScan // 자동 서블릿 등록 (동등, 하위 패키지를 다 뒤짐)
+@SpringBootApplication
+public class ServletApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServletApplication.class, args);
+	}
+}
+~~~
+
+~~~java
+@WebServlet(name = "helloServlet", urlPatterns = "/hello")
+public class HelloServlet extends HttpServlet {
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("HelloServlet.service");
+
+        System.out.println("req = " + req);
+        System.out.println("resp = " + resp);
+
+        String username = req.getParameter("username");
+        System.out.println("username = " + username);
+
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("utf-8");
+        resp.getWriter().write("hello " + username);
+    }
+}
+
+~~~
+
+WAS는 클라이언트가 보낸 메시지를 통해 Request와 Response 객체를 생성하고 적절한 서블릿을 실행시킵니다.
 
 서블릿은 클라이언트의 요청과 결과를 반활할 수 있도록 도와주는 기술임. 어떻게 도와주냐
 우리가 폼 형식으로 데이터를 전송하면 개발자는 뭘 해야함? http 메시지를 슬라이스치고 데이터를 읽어와야함. 예를 들면 md -> pdf로 변환할 때 "###"가 몇 번 쓰였는지 확인해야 하는 것처럼 
