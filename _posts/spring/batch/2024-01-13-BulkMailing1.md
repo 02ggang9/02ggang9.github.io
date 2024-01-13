@@ -47,6 +47,8 @@ public class EmailService {
 }
 ~~~
 
+![완전 기본 이미지](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/spring/batch/블로그글/기본.png?raw=true)
+
 ## 볼드체 지원 및 깔끔한 HTML 포맷팅 제공
 
 위의 코드는 단순한 텍스트만 전송할 수 있는 문제점이 있습니다. 단순한 문자만으로는 기업에서 발송하는 전문적인 메일 느낌을 낼 수 없었습니다. 고민을 하던 중 우연히 메일함에서 "우아한테크 뉴스레터"를 보게 되었습니다. 우아한테크 뉴스레터는 아래와 같이 우아한형제들의 로고와 깔끔한 볼드체, 블로그 리다이렉트로 구성되었습니다.
