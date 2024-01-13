@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Spring Batch - BDD 내부 메일링 서비스 개발 (1) - JavaMailSender를 통한 메일 발송과 마크다운 문법 지원, 메일 포맷팅"
 categories:
   - spring
