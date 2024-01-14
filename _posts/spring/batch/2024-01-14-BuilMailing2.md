@@ -25,7 +25,7 @@ Paging 기법은 page number와 page size로 데이터를 잘라오는 방식입
 
 > 인덱스를 통해 테이블의 레코드를 읽는 것은 인덱스를 거치지 않고 바로 테이블의 레코드를 읽는 것보다 높은 비용이 드는 작업입니다. 만약 100만 건의 레코드가 있다고 가정하고 그중 50만 건을 읽어야 하는 쿼리가 있다고 하면 테이블 전체를 읽어서 필요 없는 50만 건을 버리는 것이 효율적인지, 인덱스를 통해 필요한 50건만 읽어 오는 것이 효율적인지 옵티마이저는 판단해야 합니다. 일반적으로 DBMS의 옵티아미저에서 인덱스를 통해 레코드를 1건 읽는 것은 테이블에서 직접 레코드 1건을 읽는 것보다 4~5배 정도 비용이 발생한다고 예측합니다. 즉, 인덱스를 통해 읽어야 할 레코드의 건수(옵티마이저가 예측한)가 전체 테이블의 20~25%를 넘어서면 인덱스를 이용하지 않고 직접 테이블을 모두 읽어서 필요한 레코드만 필터링하는 방식이 효율적이라고 판단하게 됩니다.
 
-![Yun님 블로그 사진 참조](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/limit_3.png)
+![Yun님 블로그 사진 참조](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/limit_3.png) *Yun님의 블로그 참조*
 
 따라서 후반 청크에서는 데이터를 Full Scan 후 디스크로부터 데이터를 가져오기 때문에 필수적으로 느려질 수 밖에 없습니다.
 
@@ -35,7 +35,7 @@ Paging 기법은 page number와 page size로 데이터를 잘라오는 방식입
 
 Paging 말고 Cursor 방식으로도 데이터를 나눌 수 있습니다. Spring Batch에서는 JdbcCursorItemReader와 JpaCursorItemReader 등 다양한 구현체를 지원합니다. JdbcCursorItemReader는 ResultSetStreaming 방식으로 데이터를 한건 한건 조회합니다. 이렇게 할 경우에 일정한 속도로 데이터를 읽어올 수 있고 일정한 Heap 메모리를 사용할 수 있습니다.
 
-![Yun님 블로그 Heap 사진 참조](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/JdbcResultSetStreaming.png)
+![Yun님 블로그 Heap 사진 참조](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/JdbcResultSetStreaming.png) *Yun님의 블로그 참조*
 
 하지만 Cursor 방식은 데이터베이스와 애플리케이션 사이에 커넥션을 계속 물고있기 때문에 Timeout이 발생할 수 있습니다. 이를 해결하기 위해 default Timeout 설정을 길게 잡아줘야 합니다.
 
@@ -43,7 +43,7 @@ Paging 말고 Cursor 방식으로도 데이터를 나눌 수 있습니다. Sprin
 
 JpaCursorItemReader는 20,480,000번째 row를 조회할 때 20,480,000개의 모든 조회 데이터를 메모리에 올리기 때문에 OOM을 유발할 수 있습니다. 
 
-![Yun님 블로그 Heap 사진 참조2](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/JdbcResultSet.png)
+![Yun님 블로그 Heap 사진 참조2](https://raw.githubusercontent.com/cheese10yun/blog-sample/master/batch-study/docs/img/JdbcResultSet.png) *Yun님의 블로그 참조*
 
 
 ## ItemReader 변경 후 성능 변화 측정
