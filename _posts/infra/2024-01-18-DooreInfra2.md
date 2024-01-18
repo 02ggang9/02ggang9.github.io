@@ -1,8 +1,8 @@
 ---
-published: false
+published: true
 title:  "Infra - Doo-re Infra(1) - 도커란 무엇인가?"
 categories:
-  - Java
+  - infra
 ---
 
 ## 서론

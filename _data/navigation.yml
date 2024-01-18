@@ -44,7 +44,11 @@ sidebar-category:
       - title: "architecture"
         url: "/architecture"
         category: "architecture"
-      
+
+      - title: "infra"
+        url: "/infra"
+        category: "infra"
+
       - title: "review"
         url: "/review"
         category: "review"
