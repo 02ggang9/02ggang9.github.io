@@ -29,7 +29,7 @@ Unit Test, Integration 테스트를 지원
 .class 파일을 패키징 해 jar or war 파일로 변환
 ~~~
 
-![gradle1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra2/gradle1.png?raw=true)
+![gradle1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra1/gradle1.png?raw=true)
 
 보통 자바 개발자분들은 인텔리제이를 사용하는데 많이 하는 설정이 Build and Run을 Gradle에서 IntelliJ IDEA로 바꿔주는 것 입니다. 저는 매번 Gradle 설정을 바꾸고 IntelliJ의 Run 버튼을 눌러 실행해 위의 3개의 과정을 까먹었는데 여러분들도 이번 기회에 리마인드 하시면 좋을 것 같습니다.
 
@@ -77,11 +77,11 @@ java -jar your_project_name-0.0.1-SNAPSHOT.jar
 java -jar spring-batch-0.0.1-SNAPSHOT.jar
 ~~~
 
-![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra2/jar1.png?raw=true)
+![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra1/jar1.png?raw=true)
 
 실제로 인텔리제이의 Run 버튼을 누른 후 Console창을 확인하면 아래의 코드가 생량되어 있는 것을 확인하실 수 있습니다. 
 
-![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra2/jar2png?raw=true)
+![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra1/jar2png?raw=true)
 
 생략된 부분을 펼치면 아래의 코드처럼 수 많은 .jar를 실행시키는 것을 확인하실 수 있습니다. (인텔리제이는 java -jar 대신 -classpatch 옵션과 명시적으로 디렉터리를 지정해주는 방식을 사용하고 있습니다)
 
