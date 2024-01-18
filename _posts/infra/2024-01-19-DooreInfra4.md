@@ -159,6 +159,17 @@ services:
 
 따라서 depends_on 설정을 통해 데이터베이스 컨테이너가 띄워진 후 app 컨테이너가 띄워지고 Gradle을 통한 build 과정을 수행하도록 설계해야 합니다.
 
+## env 작성
+
+아래는 환경 변수를 설정해주기 위한 env 파일입니다. Key=Value 형식으로 작성하면 됩니다.
+
+~~~env
+MYSQL_DATABASE=example
+MYSQL_USER=example
+MYSQL_PASSWORD=example
+MYSQL_ROOT_PASSWORD=example
+~~~
+
 
 ## 로컬 환경에서 테스트
 
