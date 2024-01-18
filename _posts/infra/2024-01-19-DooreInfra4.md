@@ -181,7 +181,7 @@ docker images
 docker-compose up
 ~~~
 
-위의 코드를 실행한 결과는 아래와 같습니다. 혹시 빌드가 실패하고 **initializationError FAILED doo-re-app | java.lang.NoSuchMethodError at SpringExtension.java:381** 에러가 터진다면 [이슈](https://github.com/BDD-CLUB/01-doo-re-back/issues/15)에서 해결하실 수 있습니다.
+위의 코드를 실행한 결과는 아래와 같습니다. 혹시 빌드가 실패하고 initializationError FAILED doo-re-app | java.lang.NoSuchMethodError at SpringExtension.java:381 에러가 터진다면 [이슈](https://github.com/BDD-CLUB/01-doo-re-back/issues/15)에서 해결하실 수 있습니다.
 
 
 ![실행 결과](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra3/local1.png?raw=true)
