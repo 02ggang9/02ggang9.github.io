@@ -81,7 +81,7 @@ java -jar spring-batch-0.0.1-SNAPSHOT.jar
 
 실제로 인텔리제이의 Run 버튼을 누른 후 Console창을 확인하면 아래의 코드가 생량되어 있는 것을 확인하실 수 있습니다. 
 
-![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra1/jar2png?raw=true)
+![jar1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra1/jar2.png?raw=true)
 
 생략된 부분을 펼치면 아래의 코드처럼 수 많은 .jar를 실행시키는 것을 확인하실 수 있습니다. (인텔리제이는 java -jar 대신 -classpatch 옵션과 명시적으로 디렉터리를 지정해주는 방식을 사용하고 있습니다)
 
