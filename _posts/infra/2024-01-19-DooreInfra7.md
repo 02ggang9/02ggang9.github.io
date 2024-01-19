@@ -1,13 +1,12 @@
 ---
 published: true
-title:  "Infra - Doo-re Infra(6) - Git Action을 위한 권한 설정 및 트러블 슈팅"
+title:  "Infra - Doo-re Infra(6) - Git Action을 위한 권한 설정 Configure AWS Credntials"
 categories:
   - infra
 ---
 
-## Configure AWS Credentials
 
-### 자격 증명 공급자 설정
+## 자격 증명 공급자 설정
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/credentials1.png?raw=true)
 
@@ -24,7 +23,7 @@ categories:
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/credentials2.png?raw=true)
 
-### Role 설정
+## Role 설정
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/role1.png?raw=true)
 
@@ -61,7 +60,7 @@ GITHUB ACTION에서 S3에 파일을 업로드하고 EC2에 SSH 접근을 하기 
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/role4.png?raw=true)
 
-### git action 코드 작성
+## git action 코드 작성
 
 아래의 시크릿 값은 할당 받은 자격 증명 공급자의 ARN을 입력하시면 됩니다.
 
@@ -90,7 +89,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: $\{\{ secrets.AWS_ROLE_ARN \}\} # 할당 받은 자격 증명 공급자의 ARN
-          aws-region: $\{\{ secrets.AWS_REGION \}\} # 리전을 설정해주세요.
+          role-to-assume:  # ${{ secrets.AWS_ROLE_ARN }} 할당 받은 자격 증명 공급자의 ARN
+          aws-region: # ${{ secrets.AWS_REGION }} 리전을 설정해주세요.
 ~~~
 
