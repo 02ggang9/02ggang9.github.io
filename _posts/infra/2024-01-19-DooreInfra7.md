@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Infra - Doo-re Infra(6) - Git Action을 위한 권한 설정 및 트러블 슈팅"
 categories:
   - infra
@@ -7,11 +7,13 @@ categories:
 
 ## Configure AWS Credentials
 
-### 자격 증명 공급자
+### 자격 증명 공급자 설정
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/credentials1.png?raw=true)
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/credentials2.png?raw=true)
+
+### Role 설정
 
 ![ec2](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/infra6/role1.png?raw=true)
 
