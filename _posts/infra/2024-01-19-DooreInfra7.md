@@ -93,3 +93,5 @@ jobs:
           aws-region: # ${{ secrets.AWS_REGION }} 리전을 설정해주세요.
 ~~~
 
+## 발생한 트러블과 해결 방법
+
