@@ -43,7 +43,7 @@ GITHUB ACTION에서 S3에 파일을 업로드하고 EC2에 SSH 접근을 하기 
         {
             "Effect": "Allow",
             "Principal": {
-                "Federated": "arn:aws:iam::123456789100:oidc-provider/token.actions.githubusercontent.com" // ${{ secrets.AWS_ROLE_ARN }}
+                "Federated": "arn:aws:iam::123456789100:oidc-provider/token.actions.githubusercontent.com"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
@@ -90,7 +90,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }} # 할당 받은 자격 증명 공급자의 ARN
-          aws-region: ${{ secrets.AWS_REGION }} # 리전을 설정해주세요.
+          role-to-assume: $\{\{ secrets.AWS_ROLE_ARN \}\} # 할당 받은 자격 증명 공급자의 ARN
+          aws-region: $\{\{ secrets.AWS_REGION \}\} # 리전을 설정해주세요.
 ~~~
 
