@@ -58,7 +58,7 @@ sudo docker build -t doo-re-db:build -f docker/db.dockerfile .
 
 ### .env 파일 생성
 
-~~~env
+~~~sh
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
