@@ -39,9 +39,9 @@ spring:
 - name: Create application.yml
   working-directory: ./src/main/resources
   env:
-      APPLICATION_YML: $ {{ secrets.APPLICATION_YML }}
+      APPLICATION_YML: \$ {{ secrets.APPLICATION_YML }}
   run: | # Here!
-      echo '$ {{ secrets.APPLICATION_YML }}' >> application.yml 
+      echo '\$ {{ secrets.APPLICATION_YML }}' >> application.yml 
 ~~~
 
 하지만 의도와는 다르게 아래의 application.yml이 탄생되었습니다. 이렇기 때문에 키 값이 중복되었다는 에러 메시지가 발생하였습니다.
@@ -92,9 +92,9 @@ spring:
 - name: Create application.yml
   working-directory: ./src/main/resources
   env:
-      APPLICATION_YML: $ {{ secrets.APPLICATION_YML }}
+      APPLICATION_YML: \$ {{ secrets.APPLICATION_YML }}
   run: | # Here!
-      echo '$ {{ secrets.APPLICATION_YML }}' > application.yml 
+      echo '\$ {{ secrets.APPLICATION_YML }}' > application.yml 
 ~~~
 
 ## 이전 코드는 왜 ">>" 이였나?
