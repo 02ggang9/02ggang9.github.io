@@ -36,20 +36,17 @@ spring:
 답은 CICD 코드에 있었습니다. 아래의 sh 코드는 secrets.APPLICATION_YML 파일을 현재 존재하는 application.yml에 추가하는 코드입니다. 저의 의도는 url과 username과 password가 시크릿 처리된 application.yml을 기존의 파일에 덮어쓰기 한 후 빌드와 테스트를 진행하는 것이였습니다.
 
 ~~~yml
-
 - name: Create application.yml
   working-directory: ./src/main/resources
   env:
-      APPLICATION_YML: ${{ secrets.APPLICATION_YML }}
+      APPLICATION_YML: $ {{ secrets.APPLICATION_YML }}
   run: | # Here!
-      echo '${{ secrets.APPLICATION_YML }}' >> application.yml 
-
+      echo '$ {{ secrets.APPLICATION_YML }}' >> application.yml 
 ~~~
 
 하지만 의도와는 다르게 아래의 application.yml이 탄생되었습니다. 이렇기 때문에 키 값이 중복되었다는 에러 메시지가 발생하였습니다.
 
 ~~~yml
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/doore?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
@@ -85,7 +82,6 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
-
 ~~~
 
 ## 해결 방법
@@ -93,14 +89,12 @@ spring:
 해결 방법은 ">>"을 ">"로 수정해 덮어씌우도록 변경하면 됩니다.
 
 ~~~yml
-
 - name: Create application.yml
   working-directory: ./src/main/resources
   env:
-      APPLICATION_YML: ${{ secrets.APPLICATION_YML }}
+      APPLICATION_YML: $ {{ secrets.APPLICATION_YML }}
   run: | # Here!
-      echo '${{ secrets.APPLICATION_YML }}' > application.yml 
-
+      echo '$ {{ secrets.APPLICATION_YML }}' > application.yml 
 ~~~
 
 ## 이전 코드는 왜 ">>" 이였나?
