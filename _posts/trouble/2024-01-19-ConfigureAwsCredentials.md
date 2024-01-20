@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "It looks like you might be trying to authenticate with OIDC. Did you mean to set the id-token permission? If you are not trying to authenticate with OIDC and the action is working successfully, you can ignore this message."
+title:  "It looks like you might be trying to authenticate with OIDC. Did you mean to set the id-token permission? 에러 해결"
 categories:
   - trouble
 ---
