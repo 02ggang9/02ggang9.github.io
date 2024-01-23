@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Spring Boot - 스프링 부트란 무엇인가?"
 categories:
   - spring
