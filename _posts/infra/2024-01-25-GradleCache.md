@@ -17,7 +17,7 @@ Gradle은 다운받은 의존성을 로컬 캐시에 저장합니다. 하지만 
 
 ![gradle1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/githubAction/gradle1.png?raw=true)
 
-깃허브에서는 이런 문제점을 해결하고자 Cache Action을 제공합니다. 아래의 사진에서 확인할 수 있는 패키지 매니저를 사용한다면 최소한의 디펜던시 구성요소를 제공해주고 디펜던시 캐시를 저장할 수 있도록 해줍니다. 두레는 Gradle을 사용하기 때문에 setup-java action을 사용하도록 하겠습니다.
+깃허브에서는 이런 문제점을 해결하고자 Cache Action을 제공합니다. 아래의 사진에서 확인할 수 있는 패키지 매니저를 사용한다면 최소한의 디펜던시 구성요소를 제공해 주고 디펜던시 캐시를 저장할 수 있도록 해줍니다. 두레는 Gradle을 사용하기 때문에 setup-java action을 사용하도록 하겠습니다.
 
 ![gradle1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/githubAction/gradle2.png?raw=true)
 
@@ -70,7 +70,7 @@ actions/cache를 사용하는 방법은 아래와 같습니다.
       cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'ref/heads/develop' }} # Github-flow 전략에 따라 main과 develop 브랜치만 캐쉬를 write할 수 있도록 함
 ~~~
 
-의문이 가득하고 복잡한 key option 설정없이 gradle-version만 명시하면 자동으로 캐싱해준다는 점이 마음에 들어 두레 CICD에 적용했습니다. 
+의문이 가득하고 복잡한 key option 설정없이 gradle-version만 명시하면 훨씬 우수한 성능으로 자동 캐싱해준다는 점이 마음에 들어 두레 CICD에 적용했습니다. 
 
 ## 적용 후 결과
 
