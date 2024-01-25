@@ -7,13 +7,13 @@ categories:
 
 ## 서론
 
-저번 포스팅에서 CICD에 걸리는 시간은 한정된 리소스이기 때문에 Gradle Cache를 사용해 리소스를 절약하는 방법에 대해서 알아보겠다고 했습니다.
+저번 포스팅에서 CICD에 사용되는 시간은 한정된 리소스이기 때문에 Gradle Cache를 사용해 리소스를 절약하는 방법에 대해서 알아보겠다고 했습니다.
 
 아래에서 Github Docs와 톰 선배님의 블로그를 참고해 Gradle을 캐싱하는 방법에 대해서 알아보도록 하겠습니다.
 
 ## About caching workflow dependencies
 
-Gradle은 다운 받운 의존성을 로컬 캐시에 저장합니다. 하지만 GitHub-hosted runner(이하 러너)는 이전 포스팅 [Infra - About GitHub-hosted runners](https://02ggang9.github.io/infra/GithubAction/)에서 알아봤듯이 Job이 끝나면 프로비저닝된 VM은 폐기된다고 했습니다. 이 말은 러너는 항상 clean한 이미지에서 시작하기 때문에 매번 디펜던시를 다운받게 됩니다. 아래는 Gradle Cache가 적용되기 전 두레 CICD 과정입니다.
+Gradle은 다운받은 의존성을 로컬 캐시에 저장합니다. 하지만 GitHub-hosted runner(이하 러너)는 이전 포스팅 [Infra - About GitHub-hosted runners](https://02ggang9.github.io/infra/GithubAction/)에서 알아봤듯이 Job이 끝나면 프로비저닝된 VM은 폐기된다고 했습니다. 이 말은 러너는 항상 clean한 이미지에서 시작하기 때문에 매번 디펜던시를 다운받게 됩니다. 아래는 Gradle Cache가 적용되기 전 두레 CICD 과정입니다.
 
 ![gradle1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/infra/githubAction/gradle1.png?raw=true)
 
@@ -85,3 +85,5 @@ actions/cache를 사용하는 방법은 아래와 같습니다.
 ## 결론
 
 GitHub-hosted runner는 매번 clean한 이미지에서 시작하기 때문에 항상 Gradle 디펜던시를 다운받는 문제점이 있었습니다. 그 문제점을 해결하기 위해 공식 문서는 [actions/cache](https://github.com/marketplace/actions/cache)를 사용하라고 안내하지만 [actions/gradle-build-action](https://github.com/marketplace/actions/gradle-build-action)을 사용하는 것이 성능적으로 우수하기 때문에 두레 CICD는 actions/gradle-build-cation을 선택했습니다.
+
+성능은 1분 정도 감소하였고 이는 엄청난 발전이라고 생각합니다. 다음은 Docker Cache에 대해서 알아보도록 하겠습니다.
