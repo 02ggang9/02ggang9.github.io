@@ -7,10 +7,9 @@ categories:
 
 ## 서론
 
-두레 프로젝트에서는 Gradle이라는 자동화 빌드 툴을 사용합니다.   ~~~
+저번 포스팅에서 CICD에 걸리는 시간은 한정된 리소스이기 때문에 Gradle Cache를 사용해 리소스를 절약하는 방법에 대해서 알아보겠다고 했습니다.
 
-
-## 본론
+아래에서 Github Docs와 톰 선배님의 블로그를 참고해 Gradle을 캐싱하는 방법에 대해서 알아보도록 하겠습니다.
 
 ## About caching workflow dependencies
 
@@ -85,3 +84,4 @@ actions/cache를 사용하는 방법은 아래와 같습니다.
 
 ## 결론
 
+GitHub-hosted runner는 매번 clean한 이미지에서 시작하기 때문에 항상 Gradle 디펜던시를 다운받는 문제점이 있었습니다. 그 문제점을 해결하기 위해 공식 문서는 [actions/cache](https://github.com/marketplace/actions/cache)를 사용하라고 안내하지만 [actions/gradle-build-action](https://github.com/marketplace/actions/gradle-build-action)을 사용하는 것이 성능적으로 우수하기 때문에 두레 CICD는 actions/gradle-build-cation을 선택했습니다.
