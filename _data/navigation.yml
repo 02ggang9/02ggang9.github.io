@@ -52,3 +52,7 @@ sidebar-category:
       - title: "review"
         url: "/review"
         category: "review"
+
+      - title: "algorithm"
+        url: "/algorithm"
+        category: "algorithm"
