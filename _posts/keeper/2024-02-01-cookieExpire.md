@@ -24,9 +24,10 @@ KEEPER ReadME Quick Start Tool은 Doo-re Infra를 담당하면서 학습한 쉘 
 
 ## 로그아웃과 게시글 확인이 안되는 이유
 
-어제 픽스 후 릴리즈한 코드는 세미나 쪽만 수정했기 때문에 잘 동작하고 있던 로그아웃과 게시글 확인 기능에는 아무런 문제가 없을텐데라고 생각하면서 확인해 보니 정말로 로그인 후 로그아웃과 게시글 확인이 불가능했습니다. 개발자 도구를 열어 에러 메시지를 확인해보니 로그아웃과 게시글을 확인할 때 401이 떨어지고 있었고, 쿠키 저장소를 살펴보니 accessToken과 refreshToken이 비어있었습니다. 
+어제 버그 픽스 후 릴리즈한 코드는 세미나 쪽만 수정했기 때문에 잘 동작하고 있던 로그아웃과 게시글 확인 기능에는 아무런 문제가 없을텐데라고 생각하면서 확인해 보니 정말로 로그인 후 로그아웃과 게시글 확인이 불가능했습니다. 개발자 도구를 열어 에러 메시지를 확인해보니 로그아웃과 게시글을 확인할 때 401이 떨어지고 있었고, 쿠키 저장소를 살펴보니 accessToken과 refreshToken이 비어있었습니다. 
 
-(그림1)
+![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/image1.png?raw=true)
+
 
 로그아웃을 포함한 대부분의 Request는 Spring Security Filter에 걸리게 되는데 accessToken이 없어 401이 떨어졌고 그로 인해서 로그아웃을 못 하는 현상이 일어났습니다.
 
@@ -59,6 +60,9 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 
 ## Dev 서버는 정상으로 동작(삽질)
+
+![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/image2.png?raw=true)
+
 
 Dev 서버에는 정상적으로 accessToken과 refreshToken이 발급되고 쿠키에 저장이 되지만 Prod 서버에는 토큰 발급은 되지만 저장이 안되는 것을 확인했습니다. Dev 서버와 Prod 서버의 코드는 동일한 코드(나중에 다르다는 사실을 알게 됨)임에도 불구하고 결과 값이 다르니 프론트와 인프라의 코드 변경으로 인해 발생한 문제인줄 알았습니다. 최근 PR을 싹다 뒤져보고 Chrome의 쿠키 정책이 바뀌웠는지도 찾아봤지만 아무런 소득도 얻지 못했습니다.
 
@@ -150,7 +154,11 @@ public void setNewCookieInResponse(String authId, String[] roles, String userAge
 
 ## 로그인 Request만 보내는 것이 아니다
 
-처음에는 Sign-in Request만 집중해서 살펴봤는데 시야를 넓게 보니 추가적으로 보내는 Request들이 있음을 확인했습니다. 어디로 날리나 확인했더니 Sign-in과 동일하게 백엔드 서버로 Request를 날리고 있음을 확인했습니다. 그렇다면 얘네들도 Spring Security Filter에 걸리게 될 텐데 이 API가 accessToken과 refreshToken을 들고 필터링을 돈다면 어떤 일이 발생하는지 생각해 봤습니다. accessToken과 refreshToken이 정상이여도 else 문으로 빠져 토큰 값을 바로 삭제시킨다는 것을 알아냈습니다. 
+처음에는 Sign-in Request만 집중해서 살펴봤는데 시야를 넓게 보니 추가적으로 보내는 Request들이 있음을 확인했습니다. 어디로 날리나 확인했더니 Sign-in과 동일하게 백엔드 서버로 Request를 날리고 있음을 확인했습니다. 
+
+![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/images2.png?raw=true)
+
+그렇다면 얘네들도 Spring Security Filter에 걸리게 될 텐데 이 API가 accessToken과 refreshToken을 들고 필터링을 돈다면 어떤 일이 발생하는지 생각해 봤습니다. accessToken과 refreshToken이 정상이여도 else 문으로 빠져 토큰 값을 바로 삭제시킨다는 것을 알아냈습니다. 
 
 ~~~java
 public class RefreshTokenFilter extends GenericFilterBean {
@@ -232,7 +240,11 @@ public class RefreshTokenFilter extends GenericFilterBean {
   }
 ~~~
 
-위의 코드는 다음 Filter에 있는 코드인데 토큰 값이 유효하지 않다면 로그를 찍고 다음 필터로 넘어갑니다. 이 로그에 찍힌 값을 확인하면 문제를 해결할 수 있겠다고 생각했고 Prod 서버에 들어가려고 했는데 양도 계약서를 작성할 때 운영 Prod에는 접근하지 않겠다고 사인을 해 버린 기억이 떠올랐습니다. 그래서 실제 로그를 확인할 수 있는 방법이 없었지만 얼른 로컬에서 도커를 말아 PostMan으로 확인했고 결과는 UNKNOWN 타입인 것을 확인했습니다. 이 로그를 찍는 한 줄이 없었다면 5가지의 경우를 확인하기 위해 Prod 서버에 5번 배포하는 일이 생겼을 것입니다.
+위의 코드는 다음 Filter에 있는 코드인데 토큰 값이 유효하지 않다면 로그를 찍고 다음 필터로 넘어갑니다. 이 로그에 찍힌 값을 확인하면 문제를 해결할 수 있겠다고 생각했고 Prod 서버에 들어가려고 했는데 양도 계약서를 작성할 때 운영 Prod에는 접근하지 않겠다고 사인을 해 버린 기억이 떠올랐습니다. 그래서 실제 로그를 확인할 수 있는 방법이 없었지만 얼른 로컬에서 도커를 말아 PostMan으로 확인했고 결과는 UNKNOWN 타입인 것을 확인했습니다. 
+
+![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/image3.png?raw=true)
+
+이 로그를 찍는 한 줄이 없었다면 5가지의 경우를 확인하기 위해 Prod 서버에 5번 배포하는 일이 생겼을 것입니다.
 
 ## 개선해야 할 점
 
