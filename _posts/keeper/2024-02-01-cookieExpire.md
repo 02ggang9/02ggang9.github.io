@@ -8,7 +8,7 @@ categories:
 
 ## 서론
 
-KEEPER R2 프로젝트가 배포되고 약 3개월 동안 유지보수가 되지 않고 있었습니다. 이유는 프로젝트 PM님의 바쁜 학기 일정과 선배님의 회사 일이 바빠졌기 때문입니다. 방학이 시작되고 BDD 소모임에서 KEEPER 홈페이지 유지보수를 담당하게 되어 3일 전부터 본격적으로 유지보수를 시작하게 되었습니다. 이틀 전에 KEEPER R2 Release v1.0.1 버전을 Prod 서버에 배포하고 잠에 들었는데 로그아웃이 안되는 문제와 게시글을 확인할 수 없다는 제보를 받고 긴급 핫픽스에 들어갔습니다.
+KEEPER R2 프로젝트가 배포되고 약 3개월 동안 유지보수가 되지 않고 있었습니다. 이유는 프로젝트 PM님과 저의 바쁜 학기 일정과 선배님의 회사 일이 바빠졌기 때문입니다. 방학이 시작되고 BDD 소모임에서 KEEPER 홈페이지 유지보수를 담당하게 되어 3일 전부터 본격적으로 유지보수를 시작하게 되었습니다. 이틀 전에 KEEPER R2 Release v1.0.1 버전을 Prod 서버에 배포하고 잠에 들었는데 로그아웃이 안되는 문제와 게시글을 확인할 수 없다는 제보를 받고 긴급 핫픽스에 들어갔습니다.
 
 아래의 글에서는 버그가 발생한 복합적인 이유에 대해서 알아보고 삽질, 해결 방법과 앞으로 유지보수 해야 할 일에 대해서 알아보고 글을 마치도록 하겠습니다.
 
@@ -19,12 +19,12 @@ KEEPER ReadME Quick Start는 하나의 쉘 커맨드만 실행시켜도 KEEPER R
 
 KEEPER ReadME Quick Start Tool은 Doo-re Infra를 담당하면서 학습한 쉘 스크립트와 도커 컨테이너 기술을 이용하는데 Spring Boot 컨테이너를 띄울때 이상하게도 세미나 관련한 테스트가 깨지는 현상을 발견했습니다. 해당 현상을 ReadME를 제작하고 있던 PM님께 말씀을 드렸고 세미나 관련한 코드에 문제가 있다는 점을 확인했습니다. 관련된 PR은 [Feature/#397 세미나 테스트코드 오류 수정](https://github.com/KEEPER31337/Homepage-Back-R2/pull/400)에서 확인하실 수 있습니다.
 
-마침 1월, 2월이고 곧 있으면 세미나 관련 행사가 열리기 때문에 문제를 인지하자마자 픽스 후 운영서버에 릴리즈 했습니다. 그 후 잠이 들었고 다음날 로그아웃과 게시글 확인 기능이 안된다는 [제보](https://github.com/KEEPER31337/Homepage-Front-R2/issues/878)를 PM님께 받았습니다.
+마침 1월, 2월이고 곧 있으면 세미나 관련 행사가 열리기 때문에 문제를 인지하자마자 픽스 후 운영 서버에 릴리즈 했습니다. 그 후 잠이 들었고 다음 날 로그아웃과 게시글 확인 기능이 안 된다는 [제보](https://github.com/KEEPER31337/Homepage-Front-R2/issues/878)를 PM님께 받았습니다.
 
 
 ## 로그아웃과 게시글 확인이 안되는 이유
 
-어제 버그 픽스 후 릴리즈한 코드는 세미나 쪽만 수정했기 때문에 잘 동작하고 있던 로그아웃과 게시글 확인 기능에는 아무런 문제가 없을텐데라고 생각하면서 확인해 보니 정말로 로그인 후 로그아웃과 게시글 확인이 불가능했습니다. 개발자 도구를 열어 에러 메시지를 확인해보니 로그아웃과 게시글을 확인할 때 401이 떨어지고 있었고, 쿠키 저장소를 살펴보니 accessToken과 refreshToken이 비어있었습니다. 
+어제 버그 픽스 후 릴리즈한 코드는 세미나 쪽만 수정했기 때문에 잘 동작하고 있던 로그아웃과 게시글 확인 기능에는 아무런 문제가 없을텐데라고 생각하면서 확인해 보니 정말로 로그인 후 로그아웃과 게시글 확인이 불가능했습니다. 개발자 도구를 열어 에러 메시지를 확인해 보니 로그아웃과 게시글을 확인할 때 401이 떨어지고 있었고, 쿠키 저장소를 살펴보니 accessToken과 refreshToken이 비어있었습니다. 
 
 ![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/image1.png?raw=true)
 
@@ -64,7 +64,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 ![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/image2.png?raw=true)
 
 
-Dev 서버에는 정상적으로 accessToken과 refreshToken이 발급되고 쿠키에 저장이 되지만 Prod 서버에는 토큰 발급은 되지만 저장이 안되는 것을 확인했습니다. Dev 서버와 Prod 서버의 코드는 동일한 코드(나중에 다르다는 사실을 알게 됨)임에도 불구하고 결과 값이 다르니 프론트와 인프라의 코드 변경으로 인해 발생한 문제인줄 알았습니다. 최근 PR을 싹다 뒤져보고 Chrome의 쿠키 정책이 바뀌웠는지도 찾아봤지만 아무런 소득도 얻지 못했습니다.
+Dev 서버에는 정상적으로 accessToken과 refreshToken이 발급되고 쿠키에 저장이 되지만 Prod 서버에는 토큰 발급은 되지만 저장이 안되는 것을 확인했습니다. Dev 서버와 Prod 서버의 코드는 동일한 코드(나중에 다르다는 사실을 알게 됨)임에도 불구하고 결과 값이 다르니 프론트와 인프라의 코드 변경으로 인해 발생한 문제인 줄 알았습니다. 최근 PR을 싹 다 뒤져보고 Chrome의 쿠키 정책이 바뀌웠는지도 찾아봤지만 아무런 소득도 얻지 못했습니다.
 
 
 
@@ -72,7 +72,7 @@ Dev 서버에는 정상적으로 accessToken과 refreshToken이 발급되고 쿠
 
 KEEPER는 CICD 코드가 PR이 Merge될 때 자동으로 트리거 됩니다. 이 말은 CICD가 실패해 Dev 서버에 배포가 되지 않아도 코드는 머지된다는 소리입니다. 2달 전에 미니언 선배님께서 올린 PR을 2주 전에 제가 자기 전에 아무 생각 없이 Merge 시켰고 CICD 결과가 실패했다는 결과를 까먹고 있었습니다. 
 
-핫픽스할 때 세미나 관련한 코드만 Prod 서버에 반영된 줄 알았지만 사실 다른 코드도 포함되어 반영된 것 입니다. 이 사실을 깨닫고 2개월 전 PR에서 수정된 코드를 분석하기 시작했습니다.
+핫픽스할 때 세미나 관련한 코드만 Prod 서버에 반영된 줄 알았지만 사실 다른 코드도 포함되어 반영된 것입니다. 이 사실을 깨닫고 2개월 전 PR에서 수정된 코드를 분석하기 시작했습니다.
 
 ## 수정이 된 코드는?
 
@@ -154,7 +154,7 @@ public void setNewCookieInResponse(String authId, String[] roles, String userAge
 
 ## 로그인 Request만 보내는 것이 아니다
 
-처음에는 Sign-in Request만 집중해서 살펴봤는데 시야를 넓게 보니 추가적으로 보내는 Request들이 있음을 확인했습니다. 어디로 날리나 확인했더니 Sign-in과 동일하게 백엔드 서버로 Request를 날리고 있음을 확인했습니다. 
+처음에는 Sign-in Request만 집중해서 살펴봤는데 시야를 넓게 보니 추가적으로 보내는 Request들(activity, excellence 등..)이 있음을 확인했습니다. 어디로 날리나 확인했더니 Sign-in과 동일하게 백엔드 서버로 Request를 날리고 있음을 확인했습니다. 
 
 ![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/cookieExpried/images2.png?raw=true)
 
@@ -248,6 +248,10 @@ public class RefreshTokenFilter extends GenericFilterBean {
 
 ## 개선해야 할 점
 
+### 로깅
+
+가끔가다 로그를 찍어주는 코드를 발견하게 되는데 효율적인 방법으로 많은 로그를 남길 수 있는 방법을 찾아 적용해야 할 것 같습니다.
+
 ### Dev 서버에 배포가 안되는 문제를 해결
 
 위의 글에서 Prod 서버에서 테스트 하는 모습을 보고 기겁하셨을 수도 있습니다. 사실 저희도 Dev 서버에서 테스트를 하고 싶었지만 3개월 전부터 Dev 서버 자동배포가 되지 않는다는 사실을 깨달았습니다. 이 때문에 핫픽스된 코드를 Prod 서버에서 테스트할 수 밖에 없었고 하루라도 빨리 자동배포가 안되는 문제를 해결해야겠다고 생각했습니다.
@@ -259,4 +263,3 @@ public class RefreshTokenFilter extends GenericFilterBean {
 ### CICD 코드 수정
 
 CICD가 자동으로 트리거되는 것이 편하다고 생각했는데 CI/CD로 분리하고 수동으로 돌리는 것이 오늘의 불상사를 막을 수 있겠다고 생각했습니다. 이 부분도 회의를 거친 후 수정하도록 하겠습니다.
-
