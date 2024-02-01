@@ -59,7 +59,7 @@ sidebar-category:
       
   - title: "Project 및 동아리"
     children: 
-      - title: "KEEPER"
+      - title: "keeper"
         url: "/keeper"
         catetory: "keeper"
 
