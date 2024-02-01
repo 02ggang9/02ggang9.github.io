@@ -56,3 +56,13 @@ sidebar-category:
       - title: "algorithm"
         url: "/algorithm"
         category: "algorithm"
+      
+  - title: "Project 및 동아리"
+    children: 
+      - title: "KEEPER"
+        url: "/keeper"
+        catetory: "keeper"
+
+      - title: "BDD"
+        url: "/bdd"
+        category: "bdd"
