@@ -1,8 +1,8 @@
 ---
-published: false
+published: true
 title: "Kotlin - Reflection And Dependeny Injection"
 categories:
-  - Kotlin
+  - Java
 ---
 
 ## 서론
