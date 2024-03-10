@@ -83,6 +83,7 @@ public class MeritApiTestHelper extends IntegrationTest {
 ## 어노테이션과 리플랙션을 활용하도록 수정
 
 ~~~java
+@Documentation("search-meritType-kt")
 fun `상벌점 조회는 성공해야 한다`() {
     restDocs(mockMvc, HttpMethod.GET, "/merits/types") {
         expect(HttpStatus.OK, MediaType.APPLICATION_JSON_UTF8)
