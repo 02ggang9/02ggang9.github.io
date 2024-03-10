@@ -80,5 +80,25 @@ public class MeritApiTestHelper extends IntegrationTest {
 
 ![image1](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/images/keeper/restdocs/restdocs1.png?raw=true)
 
+## 어노테이션과 리플랙션을 활용하도록 수정
+
+~~~java
+fun `상벌점 조회는 성공해야 한다`() {
+    restDocs(mockMvc, HttpMethod.GET, "/merits/types") {
+        expect(HttpStatus.OK, MediaType.APPLICATION_JSON_UTF8)
+        cookie(*memberTestHelper.getTokenCookies(admin))
+        cookieVariable(
+                JwtType.ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
+                JwtType.REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
+        )
+        responseBodyWithPaging(
+                "content[].id" means "상벌점 타입의 ID",
+                "content[].score" means "상벌점 점수",
+                "content[].detail" means "상벌점 사유",
+                "content[].isMerit" means "상벌점 타입",
+        )
+            }       
+        }
+~~~
 
 ## 결론
