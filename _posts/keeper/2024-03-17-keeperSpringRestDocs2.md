@@ -105,8 +105,8 @@ request 메서드를 사용해서는 multipart 메서드를 지원할 수 없었
 처음 Rest Docs를 작성할 때 RestDocumentationRequestBuilders 클래스에 있는 메서드를 이용합니다. 이 메서드를 이용하면 최종적으로 MockHttpServletRequestBuilder 생성자를 호출하고 빌더 패턴으로 프로퍼티를 초기화 할 준비를 합니다.
 
 ~~~java
-mockMvc.perform(get("/merits")
-mockMvc.perform(multipart("/merits")
+mockMvc.perform(get("/merits"))
+mockMvc.perform(multipart("/merits"))
 
 // RestDocumentationReqeustBuilders Class
 public static MockHttpServletRequestBuilder get(String urlTemplate, Object... urlVariables) {
@@ -292,7 +292,80 @@ class DocsResponseBuilder {
 
 ## 개선 후 코드
 
+~~~java
+    // Spring Rest Docs
+    @Test
+    @DisplayName("상벌점 목록 조회를 성공해야 한다.")
+    void 상벌점_목록_조회를_성공해야_한다() throws Exception {
+      String securedValue = getSecuredValue(MeritController.class, "searchMeritLogList");
 
+      mockMvc.perform(get("/merits")
+              .cookie(new Cookie(ACCESS_TOKEN.getTokenName(), adminAccessToken)))
+          .andExpect(status().isOk())
+          .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+          .andDo(document("search-meritLog",
+              requestCookies(
+                  cookieWithName(ACCESS_TOKEN.getTokenName())
+                      .description("ACCESS TOKEN %s".formatted(securedValue))
+              ),
+              responseFields(
+                  pageHelper(getMeritLogResponse())
+              )));
+    }
 
+    public class MeritApiTestHelper extends IntegrationTest {
+
+    FieldDescriptor[] getMeritLogResponse() {
+        return new FieldDescriptor[]{
+            fieldWithPath("id").description("상벌점 로그의 ID"),
+            fieldWithPath("giveTime").description("상벌점 로그의 생성시간"),
+            fieldWithPath("awarderName").description("수상자의 이름"),
+            fieldWithPath("awarderGeneration").description("수상자의 학번"),
+            fieldWithPath("score").description("상벌점 점수"),
+            fieldWithPath("meritTypeId").description("상벌점 타입의 ID"),
+            fieldWithPath("reason").description("상벌점의 사유"),
+            fieldWithPath("isMerit").description("상벌점 타입")
+            };
+        }
+    }
+
+    // KEEPER DSL
+    @Documentation("search-meritLog-kt") // documentName -> Reflection
+    fun `상벌점 목록 조회를 성공해야 한다`() {
+        docs(mockMvc, DocsMethod.GET, "/merits") { // MockHttpServletRequestBuilder
+            request { // MockHttpServletRequestBuilder
+                cookie(*memberTestHelper.getTokenCookies(admin))
+            }
+
+            result { // ResultActions
+                expect(status().isOk())
+                expect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            }
+
+            response { // MockMvcRestDocumentation
+                cookie(
+                        ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
+                        REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
+                )
+
+                responseBodyWithPaging(
+                        "content[].id" means "상벌점 로그의 ID",
+                        "content[].giveTime" means "상벌점 로그의 생성시간",
+                        "content[].score" means "상벌점 점수",
+                        "content[].meritTypeId" means "상벌점 타입의 ID",
+                        "content[].reason" means "상벌점 사유",
+                        "content[].isMerit" means "상벌점 타입",
+                        "content[].awarderName" means "수상자의 이름",
+                        "content[].awarderGeneration" means "수상자의 학번",
+                )
+            }
+        }
+    }
+~~~
 
 ## 결론
+KEEPER DSL v0.0.1은 기능의 확장에 막혀 있었습니다. 하나의 클래스에 모든 메서드가 들어가 있어 메서드 명이 헷갈리고 IDE 자동완성 기능의 혜택을 받을 수 없었습니다. 
+
+수정한 KEEPER DSL은 Spring Rest Docs의 빌딩 과정을 따라했기 때문에 기능 확장에 어려움이 없습니다. 또, DocsRequestBuilder, DocsResultBuilder, DocsResponseBuilder 클래스에 분할해서 메서드를 정의했기 때문에 IDE 자동완성 기능을 적극적으로 사용할 수 있습니다.
+
+기존 버전에 비해서 코드의 길이는 길어졌기만 가독성이 눈에 띄게 높아졌습니다. 또 docs 를 작성할 때 "이런 request를 보내면 result가 이럴 것이라고 예상하고 response는 이렇게 올 것이다"라는 자연스러운 흐름으로 코드를 작성할 수 있습니다.
