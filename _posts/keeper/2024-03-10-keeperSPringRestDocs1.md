@@ -13,11 +13,90 @@ categories:
 
 아래의 본문에서는 Kotlin DSL을 사용할 때 주로 사용되는 문법, 발생한 에러와 1차 구현된 코드를 살펴보도록 하겠습니다. 코드는 [KEEPER R2 Github](https://github.com/KEEPER31337/Homepage-Back-R2/blob/Feature/%23413-RestDocs%EB%A5%BC_%EC%89%BD%EA%B2%8C_%EC%9E%91%EC%84%B1%ED%95%A0_%EC%88%98_%EC%9E%88%EB%8F%84%EB%A1%9D_%ED%95%9C%EB%8B%A4/src/test/java/com/keeper/homepage/global/docs/util.kt)에서 확인하실 수 있습니다.
 
-## 중위 함수
+## KEEPER Spring Rest Docs DSL 미리보기 (이하 KEEPER DSL)
+
+~~~java
+@Test
+fun `상벌점 조회는 성공해야 한다`() {
+    restDocs(mockMvc, "search-meritType", HttpMethod.GET, "/merits/types") {
+        expect(HttpStatus.OK, MediaType.APPLICATION_JSON_UTF8)
+        cookie(*memberTestHelper.getTokenCookies(admin))
+        cookieVariable(
+                ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
+                REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
+        )
+        responseBodyWithPaging(
+                "content[].id" means "상벌점 타입의 ID",
+                "content[].score" means "상벌점 점수",
+                "content[].detail" means "상벌점 사유",
+                "content[].isMerit" means "상벌점 타입",
+        )
+    }
+}
+~~~
 
 ## 확장 함수
 
-## 발생한 에러와 트러블 슈팅
+> 확장 함수는 어떤 클래스의 멤버 메서드인 것처럼 호출할 수 있지만 그 클래스의 밖에 선언된 함수다. Kotlin in Action p.115
+
+아래의 rest {} 는 함수입니다. 코틀린 언어에서 함수의 가장 마지막 파라미터가 함수라면 소괄호를 생략하고 람다식을 집어넣을 수 있습니다. 
+
+~~~java
+fun main() {
+    rest { // function
+
+    }
+}
+~~~
+
+아래의 Rest 클래스의 httpStatus 프로퍼티에 접근하기 위해서는 확장 함수를 사용해야 합니다. Rest 수신 객체 타입의 확장 함수를 정의한다면 Rest Class의 httpStatus 프로퍼티에 접근할 수 있습니다.
+
+~~~java
+class Rest {
+    private var httpStatus: HttpStatus? = null
+
+    fun expect(init: () -> HttpStatus) {
+        httpStatus = init()
+    }
+}
+
+fun rest(init: Rest.() -> Unit): Rest {
+    val rest = Rest()
+    rest.init()
+    return rest
+}
+
+fun main() {
+    rest {
+        expect { HttpStatus.OK }
+    }
+}
+~~~
+
+## 중위 함수 (Infix Call)
+중위 함수는 dot나 괄호를 사용하지 않고 메서드를 호출하는 유형입니다. KEEPER DSL에는 중위 함수를 이용해서 자연어로 코딩하는 느낌이 들도록 했습니다.
+
+~~~java
+infix fun String.means(description: String): Field {
+    return Field(this, description, false)
+}
+
+// Spring rest docs
+fieldWithPath("giveTime").description("상벌점 로그의 생성시간")
+
+// KEEPER DSL Infix notation
+"giveTime" means "상벌점 로그의 생성시간"
+~~~
+
+또, Field 라는 사용자 정의 클래스를 반환하도록 해서 계속해서 체이닝을 걸 수 있습니다. 이에 관한 내용은 [Kotlin으로 DSL 만들기: 반복적이고 지루한 REST Docs 벗어나기](https://toss.tech/article/kotlin-dsl-restdocs)의 Field 클래스에서 DSL 확장하기 소주제에 있습니다.
+
+~~~java
+// Spring Rest Docs
+fieldWithPath("giveTime").description("상벌점 로그의 생성시간").isOptional(true)
+
+// KEEPER DSL Infix notation
+"giveTime" means "상벌점 로그의 생성시간" optional true
+~~~
 
 ## KEEPER Spring Rest Docs DSL vs Spring Rest Docs
 
@@ -103,3 +182,9 @@ fun `상벌점 조회는 성공해야 한다`() {
 ~~~
 
 ## 결론
+
+기존 Spring Rest Docs는 수 많은 소괄호와 메서드 체이닝으로 인해 코드가 장황해지고 가독성이 떨어졌습니다. 이를 해결하기 위해서 코틀린 언어에서 제공하는 infix notation을 사용해 자연어 느낌으로 코드를 작성할 수 있었습니다. 또, 확장함수를 사용해 가독성을 챙길 수 있습니다.
+
+KEEPER DSL을 사용하면 극적으로 코드의 양을 줄일 수 있지만 아직까지 지원하지 않는 기능이 많습니다. 또 cookie(), cookieVariable() 메서드처럼 비슷한 이름이 많아 개발자가 메서드가 어떤 동작을 하는지 헷갈릴 수 있겠다고 생각했습니다.
+
+다음 글은 KEEPER DSL 구조 변경를 변경하는 글로 찾아뵙겠습니다.
