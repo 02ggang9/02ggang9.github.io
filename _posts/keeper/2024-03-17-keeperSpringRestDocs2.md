@@ -334,19 +334,19 @@ class DocsResponseBuilder {
     }
 
     // KEEPER DSL
-    @Documentation("search-meritLog-kt") // documentName -> Reflection
+    @Documentation("search-meritLog-kt")
     fun `상벌점 목록 조회를 성공해야 한다`() {
-        docs(mockMvc, DocsMethod.GET, "/merits") { // MockHttpServletRequestBuilder
-            request { // MockHttpServletRequestBuilder
+        docs(mockMvc, DocsMethod.GET, "/merits") { 
+            request {
                 cookie(*memberTestHelper.getTokenCookies(admin))
             }
 
-            result { // ResultActions
+            result {
                 expect(status().isOk())
                 expect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
             }
 
-            response { // MockMvcRestDocumentation
+            response { 
                 cookie(
                         ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
                         REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
