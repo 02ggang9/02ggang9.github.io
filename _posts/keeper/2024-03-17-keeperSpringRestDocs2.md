@@ -335,36 +335,36 @@ class DocsResponseBuilder {
 
     // KEEPER DSL
     @Documentation("search-meritLog-kt")
-    fun `상벌점 목록 조회를 성공해야 한다`() {
-        docs(mockMvc, DocsMethod.GET, "/merits") { 
-            request {
-                cookie(*memberTestHelper.getTokenCookies(admin))
-            }
+        fun `상벌점 목록 조회를 성공해야 한다`() {
+            docs(mockMvc, DocsMethod.GET, "/merits") {
+                request {
+                    cookie(*memberTestHelper.getTokenCookies(admin))
+                }
 
-            result {
-                expect(status().isOk())
-                expect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-            }
+                result {
+                    expect(status().isOk())
+                    expect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                }
 
-            response { 
-                cookie(
-                        ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
-                        REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
-                )
+                response {
+                    cookie(
+                            ACCESS_TOKEN.tokenName means "ACCESS TOKEN",
+                            REFRESH_TOKEN.tokenName means "REFRESH TOKEN",
+                    )
 
-                responseBodyWithPaging(
-                        "content[].id" means "상벌점 로그의 ID",
-                        "content[].giveTime" means "상벌점 로그의 생성시간",
-                        "content[].score" means "상벌점 점수",
-                        "content[].meritTypeId" means "상벌점 타입의 ID",
-                        "content[].reason" means "상벌점 사유",
-                        "content[].isMerit" means "상벌점 타입",
-                        "content[].awarderName" means "수상자의 이름",
-                        "content[].awarderGeneration" means "수상자의 학번",
-                )
+                    responseBodyWithPaging(
+                            "id" means "상벌점 로그의 ID",
+                            "giveTime" means "상벌점 로그의 생성시간",
+                            "score" means "상벌점 점수",
+                            "meritTypeId" means "상벌점 타입의 ID",
+                            "reason" means "상벌점 사유",
+                            "isMerit" means "상벌점 타입",
+                            "awarderName" means "수상자의 이름",
+                            "awarderGeneration" means "수상자의 학번",
+                    )
+                }
             }
         }
-    }
 ~~~
 
 ## 결론
