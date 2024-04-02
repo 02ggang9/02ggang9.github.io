@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title:  "Kubernetes - ReplicaSet과 Deployment"
 categories:
   - infra
