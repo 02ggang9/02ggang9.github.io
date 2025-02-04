@@ -1,4 +1,4 @@
----
+![image](https://github.com/user-attachments/assets/e18ed0c6-6a11-41af-b4b9-02c70a1e1033)---
 published: true
 title: "자바의 메모리 구조와 코틀린의 Pair 클래스 성능 (JVM + Algorithm)"
 ---
@@ -33,7 +33,7 @@ Pair는 정말 간단하게 두 개의 제네릭 타입을 받고, 그 타입에
 
 배열은 heap 영역에 저장되게 되는데 위 개념을 가지고 다시한번 배열을 생각해보면 아래의 사진과 같습니다.
 
-(/JvmMemory)[]
+![](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/year2025/JvmMemory1.png?raw=true)
 
 원시 타입의 배열은 heap 영역에 연속적인 메모리로 저장되고 값이 저장되지만 래퍼런스 타입은 heap 영역에 연속적인 메모리로 저장은 되지만 값이 아니라 다른 인스턴스가 heap 영역 어딘가에 저장된 주소 값을 저장하고 있습니다. 이 그림을 보고 드는 생각은 레퍼런스 타입의 배열은 힙 영역에 인스턴스가 추가로 생성된다는 것과 배열 안의 "값"에 접근하기 위해서는 한번 더 참조를 해야 함으로 시간이 더 오래 걸린다는 정도입니다.
 
@@ -42,9 +42,10 @@ Pair는 정말 간단하게 두 개의 제네릭 타입을 받고, 그 타입에
 지끔까지 알아본 개념으로 Array<IntArray>와 Array<Pair<Int,Int>>의 메모리 사용량을 생각해 볼 수 있습니다. 코틀린의 IntArray는 원시 타입의 배열이 생성되고 Array<Pair<Int, Int>>는 Pair 객체 안에 두 래퍼런스 타입이 저장됩니다. 머리속에 그림을 그려보면 얼마나 차이나는지 알 수 있는데 저는 실제로 얼마만큼의 메모리가 사용되는지 수치화를 하고 싶어 visualVM 이라는 분석 툴로 비교를 해 봤습니다.
 
 
-(/JvmMemory2)[]
+![](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/year2025/JvmMemory2.png?raw=true)
 
-(/JvmMemory3)[]
+
+![](https://github.com/02ggang9/02ggang9.github.io/blob/master/_posts/year2025/JvmMemory3.png?raw=true)
 
 위의 첫번째 사진에서 볼 수 있듯이 IntArray로 선언한 코드는 원시 타입의 배열이 생성되었고 총 461,546개가 생성되었고, 메모리 사용량은 11,114,864 Byte가 사용되었습니다. 두 번째 사진은 Pair<Int, Int> 배열로 선언한 코드의 사진인데, Pair 객체가 280,747개가 생성되었고 메모리는 6,737,928 Byte가 사용되었습니다. 또, 추가적으로 Integer 인스턴스가 총 561,501개가 생성되었고 메모리는 8,984,016이 사용되었습니다.
 
