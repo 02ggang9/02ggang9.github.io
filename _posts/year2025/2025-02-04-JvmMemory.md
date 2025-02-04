@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e18ed0c6-6a11-41af-b4b9-02c70a1e1033)---
+---
 published: true
 title: "자바의 메모리 구조와 코틀린의 Pair 클래스 성능 (JVM + Algorithm)"
 ---
