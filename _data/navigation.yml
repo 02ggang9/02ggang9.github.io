@@ -30,40 +30,40 @@ sidebar-category:
         category: "infra"
 
       - title: "etc"
-			  url: "/etc"
-				category: "etc"
+        url: "/etc"
+        category: "etc"
 
-			- title: "experience"
-			  url: "/experience"
-				category: "experience"
+      - title: "experience"
+        url: "/experience"
+        category: "experience"
 
-			- title: "독서"
-			  url: "/book"
-				category: "book"
+      - title: "독서"
+        url: "/book"
+        category: "book"
       
-	- title: "Computer Science"
-	  children:
-		  - title: "data structure"
-			  url: "/dataStructure"
-				category: "dataStructure"
+  - title: "Computer Science"
+    children:
+      - title: "data structure"
+        url: "/dataStructure"
+        category: "dataStructure"
 
-			- title: "algorithm"
-			  url: "/algorithm"
-				category: "algorithm"
+      - title: "algorithm"
+        url: "/algorithm"
+        category: "algorithm"
 
-			- title: "operating system"
-			  url: "/operatingSystem"
-				category: "operatingSystem"
+      - title: "operating system"
+        url: "/operatingSystem"
+        category: "operatingSystem"
 
-			- title: "database"
-			  url: "/database"
-				category: "database"
+      - title: "database"
+        url: "/database"
+        category: "database"
 
-			- title: "network"
-			  url: "/network"
-				category: "network"
+      - title: "network"
+        url: "/network"
+        category: "network"
 
-			- title: "computer architecture"
-			  url: "/computerArchitecture"
-				category: "computerArchitecture"
+      - title: "computer architecture"
+        url: "/computerArchitecture"
+        category: "computerArchitecture"
 
