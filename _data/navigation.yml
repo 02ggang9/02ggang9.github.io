@@ -11,58 +11,59 @@
   # - title: "Sitemap"
   #   url: /sitemap/
 sidebar-category:
-  - title: "개발"
+  - title: "Backend"
     children:
       - title: "Spring"
         url: "/spring"
         category: "spring"
 
-      - title: "Spring Security"
-        url: "/springSecurity"
-        category: "springSecurity"
-
-      - title: "Java"
-        url: "/java"
-        category: "Java"
+      - title: "JVM 계열"
+        url: "/jvm"
+        category: "jvm"
 
       - title: "JPA"
         url: "/jpa"
         category: "Jpa"
 
-      - title: "etc"
-        url: "/etc"
-        category: "etc"
-
-      - title: "CleanCode"
-        url: "/cleanCode"
-        category: "cleanCode"
-
-      - title: "우아한테크코스"
-        url: "/wooteco"
-        category: "wooteco"
-      
-      - title: "architecture"
-        url: "/architecture"
-        category: "architecture"
-
       - title: "infra"
         url: "/infra"
         category: "infra"
 
-      - title: "review"
-        url: "/review"
-        category: "review"
+      - title: "etc"
+			  url: "/etc"
+				category: "etc"
 
-      - title: "algorithm"
-        url: "/algorithm"
-        category: "algorithm"
+			- title: "experience"
+			  url: "/experience"
+				category: "experience"
+
+			- title: "독서"
+			  url: "/book"
+				category: "book"
       
-  - title: "Project 및 동아리"
-    children: 
-      - title: "keeper"
-        url: "/keeper"
-        catetory: "keeper"
+	- title: "Computer Science"
+	  children:
+		  - title: "data structure"
+			  url: "/dataStructure"
+				category: "dataStructure"
 
-      - title: "BDD"
-        url: "/bdd"
-        category: "bdd"
+			- title: "algorithm"
+			  url: "/algorithm"
+				category: "algorithm"
+
+			- title: "operating system"
+			  url: "/operatingSystem"
+				category: "operatingSystem"
+
+			- title: "database"
+			  url: "/database"
+				category: "database"
+
+			- title: "network"
+			  url: "/network"
+				category: "network"
+
+			- title: "computer architecture"
+			  url: "/computerArchitecture"
+				category: "computerArchitecture"
+
