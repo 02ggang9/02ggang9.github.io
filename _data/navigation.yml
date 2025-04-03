@@ -40,7 +40,7 @@ sidebar-category:
       - title: "독서"
         url: "/book"
         category: "book"
-      
+
   - title: "Computer Science"
     children:
       - title: "data structure"
@@ -67,3 +67,12 @@ sidebar-category:
         url: "/computerArchitecture"
         category: "computerArchitecture"
 
+  - title: "일상"
+    children:
+      - title: "노래"
+        url: "/music"
+        category: "music"
+
+      - title: "심심풀이 땅콩"
+        url: "/life"
+        category: "life"
